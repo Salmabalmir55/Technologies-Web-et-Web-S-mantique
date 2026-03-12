@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Conversion de températures</title>
+</head>
+<body>
+
+  <h2>Exercice 1 : Conversion de températures</h2>
+
+  <script>
+    function degreC() {
+      let tempF = prompt("Une température en Fahrenheit :");
+      let tempC = (5/9) * (tempF - 32);
+
+      alert("cette température équivaut à " + tempC.toFixed(1) + " degrés Celsius");
+    }
+
+    degreC();
+  </script>
+
+</body>
+</html>
