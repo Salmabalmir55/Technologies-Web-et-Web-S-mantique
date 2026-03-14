@@ -1,4 +1,4 @@
-# 🧪 TD n°1 — Introduction à JavaScript
+# 🧪 TP N°1 — Introduction à JavaScript
 
 > **Master SDIA** · Technologies du Web & Web Sémantique  
 > École Normale Supérieure de l'Enseignement Technique de Mohammedia
