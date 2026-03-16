@@ -26,41 +26,32 @@ Ce dépôt contient les solutions aux exercices du **TP n°4** portant sur les f
 td1-javascript/
 │
 ├── exercice1/
-│   ├── conversion_temperatures.html  # Page de test
-│   └── conversion_temperatures.js    # Conversion Fahrenheit → Celsius
+│   ├── conversion_temperatures.html 
 │
 ├── exercice2/
-│   ├── conversion_durees.html        # Page de test
-│   └── conversion_durees.js          # Conversion secondes → j/h/min/s
+│   ├── conversion_durees.html 
 │
 ├── exercice2bis/
-│   ├── conversion_durees_v2.html     # Page de test
-│   └── conversion_durees_v2.js       # Version améliorée (singulier/zéro)
+│   ├── conversion_durees_v2.html     
 │
 ├── exercice3/
-│   ├── trois_nombres.html            # Page de test
-│   └── trois_nombres.js              # Tri croissant de 3 nombres
-│
+│   ├── trois_nombres.html
+│ 
 ├── exercice4/
-│   ├── triangles.html                # Page de test
-│   ├── triangle1.js                  # Triangle avec while
-│   └── triangle2.js                  # Triangle avec for
+│   ├── triangle1.html                 # Triangle avec while
+│   └── triangle2.html                  # Triangle avec FOR
 │
 ├── exercice4bis/
-│   ├── pyramide.html                 # Page de test
-│   └── pyramide.js                   # Affichage d'une pyramide
+│   ├── pyramide.html             
 │
 ├── exercice5/
-│   ├── nombre_premier.html           # Page de test
-│   └── nombre_premier.js             # Test de primalité
+│   ├── nombre_premier.html          
 │
 ├── exercice6/
-│   ├── fibonacci.html                # Page de test
-│   ├── fibo1.js                      # nième terme de Fibonacci
-│   └── fibo2.js                      # Premier terme > valeur donnée
+│   ├── fibo1.html                      # nième terme de Fibonacci
+│   └── fibo2.html                     # Premier terme > valeur donnée
 │
 ├── exercice7/
-│   ├── racine_carree.html            # Page de test
 │   └── racine_carree.js              # Valeur approchée de √A
 │
 └── README.md
