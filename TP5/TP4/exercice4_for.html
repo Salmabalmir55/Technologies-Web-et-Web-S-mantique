@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 4 : Affichage de motifs - escaliers(For)</title>
+</head>
+<body>
+  <script>
+    function triangle2() {
+      let taille = Number(prompt("Un motif de taille :"));
+      let resultat = "";
+
+      for (let i = 1; i <= taille; i = i + 1) {
+        let ligne = "";
+        for (let j = 1; j <= i; j = j + 1) {
+          ligne = ligne + "*";
+        }
+        resultat = resultat + ligne + "\n";
+      }
+
+      alert(resultat);
+    }
+
+    triangle2();
+  </script>
+
+</body>
+</html>

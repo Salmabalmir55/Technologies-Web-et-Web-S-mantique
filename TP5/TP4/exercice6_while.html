@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 6 : Suite de Fibonacci (boucle While)</title>
+</head>
+<body>
+    <script>
+        function Fibo2() {
+            let limite = parseFloat(prompt("Entrez la valeur à dépasser :"));
+            let u0 = 0, u1 = 1, un = 1;
+            let rang = 1;
+
+            while (un <= limite) {
+                un = u0 + u1;
+                u0 = u1;
+                u1 = un;
+                rang++;
+            }
+
+            alert("Premier terme > " + limite + "\nValeur : " + un + "\nRang : " + rang);
+        }
+        Fibo2();
+
+    </script>
+</body>
+</html>

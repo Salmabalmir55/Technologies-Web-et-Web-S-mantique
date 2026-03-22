@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de nombre premier</title>
+</head>
+<body>
+    <h1>Exercice 5 : Test de nombre premier</h1>
+
+    <script>
+        function Premier() {
+    let n = parseInt(prompt("Un entier positif :"));
+    
+    if (n <= 1) {
+        alert(n + " n'est pas un nombre premier");
+        return;
+    }
+
+    let estPremier = true;
+    let diviseur = 0;
+
+    for (let i = 2; i < n; i++) {
+        if (n % i === 0) {
+            estPremier = false;
+            diviseur = i; 
+            break; 
+        }
+    }
+
+    if (estPremier) {
+        alert(n + " est un nombre premier");
+    } else {
+        alert(n + " n'est pas un nombre premier, il est divisible par " + diviseur);
+    }
+}
+  Premier();
+    </script>
+</body>
+</html>

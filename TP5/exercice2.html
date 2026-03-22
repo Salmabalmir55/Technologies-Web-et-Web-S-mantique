@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 2 : Calculatrice Simple</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .formulaire {
+      border: 2px solid #1a5276;
+      border-left: 6px solid #1a5276;
+      padding: 15px;
+      display: inline-block;
+    }
+
+    input[type="text"] {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .boutons {
+      margin-bottom: 8px;
+    }
+
+    .boutons button {
+      margin-right: 4px;
+      width: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="formulaire">
+    <input type="text" id="nombre1" placeholder="Nombre 1">
+    <input type="text" id="nombre2" placeholder="Nombre 2">
+    <div class="boutons">
+      <button onclick="calculer('+')">+</button>
+      <button onclick="calculer('-')">-</button>
+      <button onclick="calculer('*')">*</button>
+      <button onclick="calculer('/')">/</button>
+    </div>
+    <input type="text" id="resultat" placeholder="Résultat" readonly>
+  </div>
+
+  <script>
+    function calculer(op) {
+      const n1 = parseFloat(document.getElementById("nombre1").value);
+      const n2 = parseFloat(document.getElementById("nombre2").value);
+      let resultat;
+
+      if (isNaN(n1) || isNaN(n2)) {
+        resultat = "Entrée invalide";
+      } else {
+        switch (op) {
+          case '+': resultat = n1 + n2; break;
+          case '-': resultat = n1 - n2; break;
+          case '*': resultat = n1 * n2; break;
+          case '/':
+            resultat = n2 !== 0 ? n1 / n2 : "Division par zéro";
+            break;
+        }
+      }
+
+      document.getElementById("resultat").value = resultat;
+    }
+  </script>
+
+</body>
+</html>

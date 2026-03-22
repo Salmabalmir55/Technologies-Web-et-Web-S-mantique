@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 4 : Affichage de motifs - escaliers(While)</title>
+</head>
+<body>
+
+  <script>
+    function triangle1() {
+      let taille = Number(prompt("Un motif de taille :"));
+      let resultat = "";
+
+      let i = 1;
+      while (i <= taille) {
+        let ligne = "";
+        
+        let j = 1;
+        while (j <= i) {
+          ligne = ligne + "*";
+          j = j + 1;
+        }
+        resultat = resultat + ligne + "\n";
+        i = i + 1;
+      }
+
+      alert(resultat);
+    }
+
+    triangle1();
+  </script>
+
+</body>
+</html>

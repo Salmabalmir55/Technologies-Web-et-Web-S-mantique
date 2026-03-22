@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 1 : Permutation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .formulaire {
+      border: 2px solid #1a5276;
+      border-left: 6px solid #1a5276;
+      padding: 15px;
+      display: inline-block;
+    }
+
+    input[type="text"] {
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="formulaire">
+    <input type="text" id="zone1">
+    <input type="text" id="zone2">
+    <button onclick="permuter()">Permuter</button>
+  </div>
+
+  <script>
+    function permuter() {
+      const z1 = document.getElementById("zone1");
+      const z2 = document.getElementById("zone2");
+      const temp = z1.value;
+      z1.value = z2.value;
+      z2.value = temp;
+    }
+  </script>
+
+</body>
+</html>

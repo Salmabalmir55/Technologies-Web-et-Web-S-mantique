@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 4 : Calculatrice Avancée</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .calculatrice {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      width: 420px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    #ecran {
+      width: 100%;
+      background: #e8e8e8;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 15px;
+      font-size: 1.4em;
+      text-align: right;
+      margin-bottom: 12px;
+      color: #222;
+      min-height: 50px;
+      word-break: break-all;
+      outline: none;
+      cursor: default;
+    }
+
+
+    .grille {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    button {
+      background: #d4d4d4;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 5px;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background 0.15s;
+      color: #222;
+    }
+
+    button:hover  { background: #bbb; }
+    button:active { background: #999; }
+
+
+    .btn-egal {
+      background: #555;
+      color: white;
+    }
+    .btn-egal:hover { background: #333; }
+
+    .btn-ce {
+      background: #888;
+      color: white;
+    }
+    .btn-ce:hover { background: #666; }
+
+
+    .span2 { grid-column: span 2; }
+
+
+  </style>
+</head>
+<body>
+
+<div class="calculatrice">
+  <input type="text" id="ecran" readonly value="0">
+
+  <div class="grille">
+    <!-- Ligne 1 -->
+    <button style="visibility:hidden"></button>
+    <button style="visibility:hidden"></button>
+    <button style="visibility:hidden"></button>
+    <button style="visibility:hidden"></button>
+    <button onclick="ajouter('(')">(</button>
+    <button onclick="ajouter(')')">)</button>
+    <button onclick="ajouter('%')">%</button>
+    <button class="btn-ce" onclick="effacer()">CE</button>
+    <!-- Ligne 2 -->
+    <button onclick="inverser()">Inv</button>
+    <button onclick="fonctionMath('sin')">sin</button>
+    <button onclick="fonctionMath('ln')">ln</button>
+    <button style="visibility:hidden"></button>
+    <button onclick="ajouter('7')">7</button>
+    <button onclick="ajouter('8')">8</button>
+    <button onclick="ajouter('9')">9</button>
+    <button onclick="ajouter('/')">÷</button>
+
+    <!-- Ligne 3  -->
+    <button onclick="ajouter(Math.PI.toString())">π</button>
+    <button onclick="fonctionMath('cos')">cos</button>
+    <button onclick="fonctionMath('log')">log</button>
+    <button style="visibility:hidden"></button>
+    <button onclick="ajouter('4')">4</button>
+    <button onclick="ajouter('5')">5</button>
+    <button onclick="ajouter('6')">6</button>
+    <button onclick="ajouter('*')">×</button>
+
+    <!-- Ligne 4 -->
+    <button onclick="ajouter(Math.E.toString())">e</button>
+    <button onclick="fonctionMath('tan')">tan</button>
+    <button onclick="fonctionMath('sqrt')">√</button>
+    <button style="visibility:hidden"></button>
+    <button onclick="ajouter('3')">3</button>
+    <button onclick="ajouter('2')">2</button>
+    <button onclick="ajouter('1')">1</button>
+    <button onclick="ajouter('-')">-</button>
+
+    <!-- Ligne 5 -->
+    <button onclick="ajouter('e')">EXP</button>
+    <button onclick="carre()">x²</button>
+    <button onclick="puissance()">x^</button>
+    <button style="visibility:hidden"></button>
+    <button onclick="ajouter('.')">.</button>
+    <button onclick="ajouter('0')">0</button>
+    <button class="btn-egal" onclick="calculer()">=</button>
+    <button onclick="ajouter('+')">+</button>
+
+  </div>
+</div>
+
+<script>
+  let expression = "";
+  let inversé = false;
+
+  const ecran = document.getElementById("ecran");
+
+  function mettreAJour(val) {
+    ecran.value = val || "0";
+  }
+
+  function ajouter(val) {
+    if (ecran.value === "0" && !isNaN(val)) {
+      expression = val;
+    } else {
+      expression += val;
+    }
+    mettreAJour(expression);
+  }
+
+  function effacer() {
+    expression = "";
+    mettreAJour("0");
+    inversé = false;
+  }
+
+  function calculer() {
+    try {
+
+      let expr = expression.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
+      let resultat = Function('"use strict"; return (' + expr + ')')();
+      if (!isFinite(resultat)) throw new Error("Infini");
+      resultat = parseFloat(resultat.toFixed(10));
+      expression = resultat.toString();
+      mettreAJour(expression);
+    } catch {
+      mettreAJour("Erreur");
+      expression = "";
+    }
+  }
+
+  function fonctionMath(fn) {
+    try {
+      let val = parseFloat(expression);
+      let res;
+      if (inversé) {
+        switch(fn) {
+          case 'sin': res = Math.asin(val) * 180 / Math.PI; break;
+          case 'cos': res = Math.acos(val) * 180 / Math.PI; break;
+          case 'tan': res = Math.atan(val) * 180 / Math.PI; break;
+          case 'ln':  res = Math.exp(val); break;
+          case 'log': res = Math.pow(10, val); break;
+          case 'sqrt': res = Math.pow(val, 2); break;
+        }
+        inversé = false;
+      } else {
+        switch(fn) {
+          case 'sin': res = Math.sin(val * Math.PI / 180); break;
+          case 'cos': res = Math.cos(val * Math.PI / 180); break;
+          case 'tan': res = Math.tan(val * Math.PI / 180); break;
+          case 'ln':  res = Math.log(val); break;
+          case 'log': res = Math.log10(val); break;
+          case 'sqrt': res = Math.sqrt(val); break;
+        }
+      }
+      res = parseFloat(res.toFixed(10));
+      expression = res.toString();
+      mettreAJour(expression);
+    } catch {
+      mettreAJour("Erreur");
+      expression = "";
+    }
+  }
+
+  function inverser() {
+    inversé = !inversé;
+    ecran.style.background = inversé ? "#ffe0b2" : "#e8e8e8";
+  }
+
+  function carre() {
+    try {
+      let val = parseFloat(expression);
+      let res = parseFloat((val * val).toFixed(10));
+      expression = res.toString();
+      mettreAJour(expression);
+    } catch {
+      mettreAJour("Erreur");
+    }
+  }
+
+  function puissance() {
+    ajouter('**');
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key >= '0' && e.key <= '9') ajouter(e.key);
+    else if (['+','-','*','/','(',')','%','.'].includes(e.key)) ajouter(e.key);
+    else if (e.key === 'Enter' || e.key === '=') calculer();
+    else if (e.key === 'Escape') effacer();
+    else if (e.key === 'Backspace') {
+      expression = expression.slice(0, -1);
+      mettreAJour(expression || "0");
+    }
+  });
+</script>
+
+</body>
+</html>

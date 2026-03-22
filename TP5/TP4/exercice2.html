@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Conversion de durées</title>
+</head>
+<body>
+
+  <h2>Exercice 2 : Conversion de durées</h2>
+
+  <script>
+    function conversion() {
+      let totalSecondes = prompt("Une durée en secondes :");
+
+      let jours   = Math.floor(totalSecondes / 86400);
+      let heures  = Math.floor((totalSecondes % 86400) / 3600);
+      let minutes = Math.floor((totalSecondes % 3600) / 60);
+      let secondes = totalSecondes % 60;
+
+      alert("cette durée équivaut à " + jours + " jours " + heures + " heures " + minutes + " minutes " + secondes + " secondes");
+    }
+
+    conversion();
+  </script>
+
+</body>
+</html>
